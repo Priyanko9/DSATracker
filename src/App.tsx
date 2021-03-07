@@ -7,18 +7,12 @@ import TopicCard from './topicCard';
 function App() {
 
   useEffect(()=>{
-    let fileReader=new FileReader();
-    // fetch('./FINAL450.xlsx')
-    //   .then((response)=>response.blob())
-    //   .then((blob)=>fileReader.readAsBinaryString(blob))
-    //   .
     
     const readExcel=async () => {
       
       let file=await fetch('./FINAL450.xlsx');
       let fileBuffer=await file.arrayBuffer();
       let data = new Uint8Array(fileBuffer);
-      // fileReader.readAsArrayBuffer(data);
       let workbook=xlsx.read(data,{type:"array"});
       let jsonData:Array<any>=[];
       console.log(workbook);
